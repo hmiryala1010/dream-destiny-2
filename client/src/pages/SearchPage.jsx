@@ -8,6 +8,7 @@ import Navbar from "../components/Navbar";
 import ListingCard from "../components/ListingCard";
 import Footer from "../components/Footer"
 import API_URL from "../api";
+
 const SearchPage = () => {
   const [loading, setLoading] = useState(true)
   const { search } = useParams()

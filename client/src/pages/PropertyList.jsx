@@ -8,6 +8,7 @@ import Loader from "../components/Loader";
 import Footer from "../components/Footer";
 import API_URL from "../api";
 
+
 const PropertyList = () => {
   const [loading, setLoading] = useState(true);
   const user = useSelector((state) => state.user);

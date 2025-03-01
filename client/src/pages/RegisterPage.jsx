@@ -13,6 +13,7 @@ const RegisterPage = () => {
     profileImage: null,
   });
 
+  
   const [passwordMatch, setPasswordMatch] = useState(true);
   const [previewImage, setPreviewImage] = useState(null);
 
