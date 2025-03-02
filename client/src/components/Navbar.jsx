@@ -43,9 +43,10 @@ const Navbar = () => {
 
       <div className="navbar_right">
         {user ? (
-          <a href="/create-listing" className="host">
-            Become A Host
-          </a>
+          <Link to="/create-listing" className="host">
+          Become A Host
+        </Link>
+        
         ) : (
           <a href="/login" className="host">
             Become A Host
