@@ -11,7 +11,7 @@ import API_URL from "../api";
 const ReservationList = () => {
   const [loading, setLoading] = useState(true);
   const userId = useSelector((state) => state.user?._id);
-  const reservationList = useSelector((state) => state.user?.reservationList);
+  const reservationList = useSelector((state) => state.user?.reservationList) || [];
 
   const dispatch = useDispatch();
 
@@ -23,11 +23,19 @@ const ReservationList = () => {
         method: "GET",
       });
 
+      if (!response.ok) {
+        throw new Error(`HTTP error! Status: ${response.status}`);
+      }
+
       const data = await response.json();
-      dispatch(setReservationList(data));
+      console.log("Fetched reservation list:", data); // Debugging
+
+      dispatch(setReservationList(Array.isArray(data) ? data : []));
       setLoading(false);
     } catch (err) {
-      console.log("Fetch Reservation List failed!", err.message);
+      console.error("Fetch Reservation List failed!", err);
+      dispatch(setReservationList([])); // Ensure it's always an array
+      setLoading(false);
     }
   }, [dispatch, userId]);
 
@@ -42,23 +50,27 @@ const ReservationList = () => {
       <Navbar />
       <h1 className="title-list">Your Reservation List</h1>
       <div className="list">
-        {reservationList?.map(
-          ({ listingId, hostId, startDate, endDate, totalPrice, booking = true }) => (
-            <ListingCard
-              key={listingId._id} // Prevent React key warning
-              listingId={listingId._id}
-              creator={hostId._id}
-              listingPhotoPaths={listingId.listingPhotoPaths}
-              city={listingId.city}
-              province={listingId.province}
-              country={listingId.country}
-              category={listingId.category}
-              startDate={startDate}
-              endDate={endDate}
-              totalPrice={totalPrice}
-              booking={booking}
-            />
+        {reservationList.length > 0 ? (
+          reservationList.map(
+            ({ listingId, hostId, startDate, endDate, totalPrice, booking = true }) => (
+              <ListingCard
+                key={listingId?._id} // Prevent React key warning
+                listingId={listingId?._id}
+                creator={hostId?._id}
+                listingPhotoPaths={listingId?.listingPhotoPaths}
+                city={listingId?.city}
+                province={listingId?.province}
+                country={listingId?.country}
+                category={listingId?.category}
+                startDate={startDate}
+                endDate={endDate}
+                totalPrice={totalPrice}
+                booking={booking}
+              />
+            )
           )
+        ) : (
+          <p>No reservations found.</p>
         )}
       </div>
       <Footer />
