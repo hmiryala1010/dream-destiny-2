@@ -1,47 +1,45 @@
 import React, { useState } from "react";
-import "../styles/Login.scss"
+import "../styles/Login.scss";
 import { setLogin } from "../redux/state";
-import { useDispatch } from "react-redux"
-import { useNavigate } from "react-router-dom"
+import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import API_URL from "../api";
 
 const LoginPage = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const dispatch = useDispatch()
-
-  const navigate = useNavigate()
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
-    e.preventDefault()
+    e.preventDefault();
 
     try {
-      const response = await fetch (`${API_URL}/auth/login`, {
+      const response = await fetch(`${API_URL}/auth/login`, {
         method: "POST",
         headers: {
-          "Content-Type": "application/json"
+          "Content-Type": "application/json",
         },
-        body: JSON.stringify({ email, password })
-      })
+        body: JSON.stringify({ email, password }),
+      });
 
-      /* Get data after fetching */
-      const loggedIn = await response.json()
-      console.log("Server Response:", loggedIn); 
+      // Get data after fetching
+      const loggedIn = await response.json();
+      console.log("Server Response:", loggedIn);
       if (loggedIn) {
-        dispatch (
+        dispatch(
           setLogin({
             user: loggedIn.user,
-            token: loggedIn.token
+            token: loggedIn.token,
           })
-        )
-        navigate("/")
+        );
+        navigate("/");
       }
-
     } catch (err) {
-      console.log("Login failed", err.message)
+      console.log("Login failed", err.message);
     }
-  }
+  };
 
   return (
     <div className="login">
@@ -63,7 +61,7 @@ const LoginPage = () => {
           />
           <button type="submit">LOG IN</button>
         </form>
-        <a href="/register">Don't have an account? Sign In Here</a>
+        <a href="/register">Don't have an account? Sign Up Here</a>
       </div>
     </div>
   );

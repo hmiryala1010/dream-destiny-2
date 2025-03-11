@@ -2,14 +2,17 @@
 @import "./breakpoints.scss";
 
 .listing-details {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
   padding: 40px 130px 120px;
-
-  @include xl {
-    padding: 40px 80px 120px;
-  }
 
   @include lg {
     padding: 40px 50px 120px;
+  }
+
+  @include md {
+    padding: 40px 30px 120px;
   }
 
   @include sm {
@@ -18,7 +21,7 @@
 
   .title {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
 
     @include sm {
@@ -50,11 +53,16 @@
   .photos {
     display: flex;
     flex-wrap: wrap;
+    justify-content: center;
     gap: 10px;
     margin: 20px 0;
 
     img {
       max-width: 280px;
+
+      @include sm {
+        max-width: 100%;
+      }
     }
   }
 
@@ -81,6 +89,8 @@
 
   .booking {
     display: flex;
+    align-items: center;
+    flex-direction: column;
     justify-content: space-between;
 
     @include lg {
@@ -96,6 +106,7 @@
       max-width: 700px;
 
       @include sm {
+        grid-template-columns: 1fr; /* Stack items on small screens */
         grid-column-gap: 20px;
       }
 
@@ -118,6 +129,10 @@
     }
 
     .date-range-calendar {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
       margin: 30px 0;
 
       h2 {

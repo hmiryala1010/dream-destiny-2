@@ -2,14 +2,16 @@
 @import "./breakpoints.scss";
 
 .register {
-  width: 100vw;
+  width: 100%;
   height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  background: url("../../public/assets/register.jpg") center;
+  background: url("../../public/assets/register.jpg") center no-repeat;
   background-size: cover;
+  padding: 20px;
+  box-sizing: border-box;
 
   &_content {
     display: flex;
@@ -19,13 +21,31 @@
     padding: 40px;
     background-color: rgba(0, 0, 0, 0.8);
     border-radius: 20px;
+    min-width: 300px;
 
     @include lg {
-      width: 60%
+      width: 50%;
+      padding: 35px;
     }
 
-    @include mm {
-      width: 80%
+    @include md {
+      width: 65%;
+      padding: 30px;
+    }
+
+    @include sm {
+      width: 85%;
+      padding: 25px;
+    }
+
+    @include xs {
+      width: 95%;
+      padding: 15px;
+    }
+
+    @include ultra-xs {
+      width: 95%;
+      padding: 10px;
     }
 
     &_form {
@@ -33,23 +53,31 @@
       flex-direction: column;
       align-items: center;
       gap: 15px;
+      width: 100%;
 
       input {
         width: 100%;
-        padding: 7px 15px;
+        padding: 12px;
         background-color: transparent;
         border: none;
         border-bottom: 1px solid rgba(255, 255, 255, 0.3);
         outline: none;
         text-align: center;
         color: white;
-
-        input:not(:placeholder-shown):focus {
-          background: transparent; /* or background: none; */
-        }
+        font-size: 16px;
+        transition: all 0.3s ease-in-out;
 
         &::placeholder {
-          color: white;
+          color: rgba(255, 255, 255, 0.7);
+        }
+
+        &:focus {
+          border-bottom: 1px solid white;
+        }
+
+        @include ultra-xs {
+          padding: 10px;
+          font-size: 14px;
         }
       }
 
@@ -70,12 +98,28 @@
 
       button {
         margin-top: 15px;
-
         @include buttonStyle;
         width: 50%;
+        padding: 12px;
+        font-size: 16px;
+        font-weight: bold;
+        text-transform: uppercase;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: 0.3s ease-in-out;
 
         &:hover {
-          box-shadow: 0 0 10px 3px rgba(255, 255, 255);
+          box-shadow: 0 0 10px 3px rgba(255, 255, 255, 0.8);
+        }
+
+        @include sm {
+          width: 60%;
+        }
+
+        @include ultra-xs {
+          width: 80%;
+          padding: 10px;
+          font-size: 14px;
         }
       }
     }
@@ -83,12 +127,22 @@
     a {
       text-decoration: none;
       color: white;
-      font-size: 13px;
+      font-size: 14px;
       margin-top: 10px;
       text-align: center;
+      transition: color 0.3s ease;
 
       &:hover {
         text-decoration: underline;
+        color: #f8c8dc;
+      }
+
+      @include sm {
+        font-size: 13px;
+      }
+
+      @include ultra-xs {
+        font-size: 12px;
       }
     }
   }

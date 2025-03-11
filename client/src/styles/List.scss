@@ -1,10 +1,11 @@
 @import "./breakpoints.scss";
 @import "./variables.scss";
 
-
 .title-list {
   margin: 40px 100px;
   color: $blue;
+  display: flex;
+  justify-content: center;
 
   @include sm {
     margin: 40px 50px;
@@ -18,7 +19,16 @@
   flex-wrap: wrap;
   gap: 25px;
 
-  @include xl {
+  @include md-lg {  // Use md-lg for larger devices
     padding: 0 20px 120px;
+  }
+
+  @include lg {  // Use lg for medium to large devices
+    padding: 0 40px 120px;
+  }
+
+  @include sm {  // Use sm for smaller screens
+    padding: 0 20px 80px;  // Reduce padding for small screens to fit better
+    gap: 15px;  // Reduce the gap on smaller devices
   }
 }

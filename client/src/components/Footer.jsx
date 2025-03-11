@@ -1,18 +1,21 @@
-import "../styles/Footer.scss"
-import { LocalPhone, Email } from "@mui/icons-material"
+import "../styles/Footer.scss";
+import { LocalPhone, Email } from "@mui/icons-material";
+
 const Footer = () => {
   return (
     <div className="footer">
       <div className="footer_left">
-        <a href="/"><img src="/assets/logo.png" alt="logo" /></a>
+        <a href="/">
+          <img src="/assets/logo.png" alt="logo" />
+        </a>
       </div>
 
       <div className="footer_center">
         <h3>Useful Links</h3>
         <ul>
-          <li>About Us</li>
-          <li>Terms and Conditions</li>
-          <li>Return and Refund Policy</li>
+          <li><a href="/about">About Us</a></li>
+          <li><a href="/terms">Terms and Conditions</a></li>
+          <li><a href="/refund">Return and Refund Policy</a></li>
         </ul>
       </div>
 
@@ -26,10 +29,10 @@ const Footer = () => {
           <Email />
           <p>dreamdestiny@support.com</p>
         </div>
-        <img src="/assets/payment.png" alt="payment" />
+        <img src="/assets/payment.png" alt="payment methods" className="payment-img" />
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default Footer
+export default Footer;

@@ -5,8 +5,12 @@
   background-color: $lightgrey;
   padding: 40px 60px 120px;
 
-  @include mm {
+  @include md-sm {
     padding: 40px 20px;
+  }
+
+  @include xs {
+    padding: 20px;
   }
 
   h1 {
@@ -137,10 +141,14 @@
       grid-template-columns: 1fr 1fr;
       gap: 40px;
 
-      @include ml {
+      @include md-lg {
         display: flex;
         flex-direction: column;
         gap: 0;
+      }
+
+      @include sm {
+        display: block;
       }
     }
 
@@ -309,7 +317,7 @@
         padding: 40px 100px;
         border-radius: 10px;
 
-        @include mm {
+        @include md-sm {
           padding: 40px 80px;
         }
 
@@ -349,7 +357,7 @@
         font-weight: 600;
         width: 600px;
 
-        @include ml {
+        @include md-lg {
           width: 450px;
         }
 

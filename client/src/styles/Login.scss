@@ -21,11 +21,30 @@
     border-radius: 20px;
 
     @include lg {
-      width: 60%
+      width: 60%;
     }
 
-    @include mm {
-      width: 80%
+    @include md {
+      width: 70%; // Adjust width for medium-sized screens
+    }
+
+    @include md-sm {  // Adjusted for smaller tablets and larger mobile screens
+      width: 80%;
+    }
+
+    @include sm {
+      width: 90%; // Slightly increased width on small screens
+      padding: 25px; // Adjust padding for small screens
+    }
+
+    @include xs {
+      width: 95%; // Full width on very small devices
+      padding: 20px; // Reduce padding on xs
+    }
+
+    @include ultra-xs {
+      width: 95%;
+      padding: 15px; // More compact padding for ultra small screens
     }
 
     &_form {
@@ -44,20 +63,37 @@
         text-align: center;
         color: white;
 
-        input:not(:placeholder-shown):focus {
-          background: transparent; /* or background: none; */
-        }
-
         &::placeholder {
           color: white;
+        }
+
+        &:focus {
+          border-bottom: 1px solid white;
+        }
+
+        @include ultra-xs {
+          font-size: 14px; // Smaller font size for ultra small screens
+        }
+
+        @include xs {
+          font-size: 15px; // Adjust font size for extra small screens
         }
       }
 
       button {
         margin-top: 15px;
-
         @include buttonStyle;
-        width: 50%;
+        width: 50%; // Medium button width on larger screens
+
+        @include sm {
+          width: 60%; // Slightly larger button on small screens
+        }
+
+        @include ultra-xs {
+          width: 70%; // Button width on ultra small screens
+          padding: 10px;
+          font-size: 14px;
+        }
 
         &:hover {
           box-shadow: 0 0 10px 3px rgba(255, 255, 255);
@@ -82,12 +118,28 @@
       &:hover {
         text-decoration: underline;
       }
+
+      @include sm {
+        font-size: 16px; // Adjust text size for small screens
+      }
+
+      @include ultra-xs {
+        font-size: 14px; // Smaller text for ultra small screens
+      }
     }
 
     p {
       color: white;
       font-size: 13px;
       text-align: center;
+
+      @include sm {
+        font-size: 12px; // Smaller text on smaller screens
+      }
+
+      @include ultra-xs {
+        font-size: 11px; // Even smaller text for ultra small screens
+      }
     }
   }
 }
